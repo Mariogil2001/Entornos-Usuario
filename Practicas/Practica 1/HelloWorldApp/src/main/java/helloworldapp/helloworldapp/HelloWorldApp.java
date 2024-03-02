@@ -6,7 +6,8 @@ package helloworldapp.helloworldapp;
 
 /**
  *
- * @author Mario Gil Domingo
+ * @author Mario Gil
+ * @author Daniel Breva
  */
 public class HelloWorldApp {
 

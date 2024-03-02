@@ -11,13 +11,14 @@ import java.util.HashSet; // Utilizamos HashSet para evitar posibles duplicados 
 
 /**
  * 
- * @author Mario Gil Domingo
+ * @author Mario Gil
+ * @author Daniel Breva
  * @version 1.0
  * 
  */
 
 public class Coleccion {
-    private HashSet<Pelicula> peliculas;
+    private final HashSet<Pelicula> peliculas;
     // private static final int MAX = 100;
     // private int posicionActual = 0;
 
@@ -38,6 +39,7 @@ public class Coleccion {
         return peliculas.add(p);
     }
 
+    @Override
     public String toString() {
         String resultado = "";
         for (Pelicula p : peliculas)

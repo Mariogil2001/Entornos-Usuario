@@ -3,32 +3,32 @@ package es.uv.eu;
 import java.util.HashSet;
 
 /**
- * Clase que representa una colección de médicos.
+ * Clase que representa una coleccion de medicos.
  */
 public class ColeccionMedicos {
-    private HashSet<Medico> medicos; // Conjunto que almacena los médicos
+    private HashSet<Medico> medicos; // Conjunto que almacena los medicos
 
     /**
-     * Constructor que inicializa la colección de médicos como un HashSet vacío.
+     * Constructor que inicializa la coleccion de medicos como un HashSet vaci�o.
      */
     public ColeccionMedicos() {
         medicos = new HashSet<>();
     }
 
     /**
-     * Método para agregar un médico a la colección.
+     * Metodo para agregar un medico a la coleccion.
      *
-     * @param medico El médico a agregar.
+     * @param medico El medico a agregar.
      */
     public void addMedico(Medico medico) {
         medicos.add(medico);
     }
 
     /**
-     * Método que verifica si un médico con el nombre especificado está presente en la colección.
+     * Metodo que verifica si un medico con el nombre especificado esta presente en la coleccion.
      *
-     * @param nombreMedico El nombre del médico a buscar.
-     * @return true si el médico está presente, false en caso contrario.
+     * @param nombreMedico El nombre del medico a buscar.
+     * @return true si el medico esta presente, false en caso contrario.
      */
     public boolean contieneMedico(String nombreMedico) {
         for (Medico medico : medicos) {
@@ -40,10 +40,10 @@ public class ColeccionMedicos {
     }
 
     /**
-     * Método que obtiene un médico de la colección por su nombre.
+     * Metodo que obtiene un medico de la coleccion por su nombre.
      *
-     * @param nombreMedico El nombre del médico a obtener.
-     * @return El médico con el nombre especificado, o null si no se encuentra.
+     * @param nombreMedico El nombre del medico a obtener.
+     * @return El medico con el nombre especificado, o null si no se encuentra.
      */
     public Medico getMedico(String nombreMedico) {
         for (Medico medico : medicos) {
@@ -55,10 +55,11 @@ public class ColeccionMedicos {
     }
 
     /**
-     * Método que devuelve una representación en forma de cadena de la colección de médicos.
+     * Metodo que devuelve una representacion en forma de cadena de la coleccion de medicos.
      *
-     * @return Una cadena que representa la colección de médicos.
+     * @return Una cadena que representa la coleccion de medicos.
      */
+    @Override
     public String toString() {
         StringBuilder resultado = new StringBuilder();
         for (Medico m : medicos) {

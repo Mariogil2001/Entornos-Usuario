@@ -11,6 +11,7 @@ package es.uv.eu.javaapp1;
 /**
  * 
  * @author Mario Gil Domingo
+ * @author Daniel Breva
  * @version 1.0
  * 
  */
@@ -50,6 +51,7 @@ public class Pelicula {
      * @param titulo   Titulo de la pelicula.
      * @param director Nombre del director.
      * @param anyo     Anyo de produccion.
+     * @param genero
      */
     public Pelicula(String titulo, String director, int anyo, int genero) {
         this.titulo = titulo;
@@ -144,6 +146,7 @@ public class Pelicula {
     /**
      * Sobrecarga el operador para mostrar por pantalla.
      */
+    @Override
     public String toString() {
         String cadenaGenero = "";
 
