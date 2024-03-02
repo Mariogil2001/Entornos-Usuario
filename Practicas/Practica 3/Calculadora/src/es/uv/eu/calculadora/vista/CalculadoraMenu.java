@@ -13,9 +13,13 @@ import javax.swing.JMenuItem;
  * @version 1.0
  * 
  */
+/**
+ * La clase CalculadoraMenu representa la barra de menu para la aplicación de calculadora.
+ * Extiende la clase JMenuBar y proporciona un menu con una opcion de salida.
+ */
 public class CalculadoraMenu extends JMenuBar {
     private JMenu menu; // Menu de la calculadora
-    private JMenuItem exit; // Opcion de salir, va como un item del menu
+    private JMenuItem exit; // Opcion de salir, se agrega como un elemento del menu
 
     public CalculadoraMenu() {
         menu = new JMenu("Calculadora");
@@ -27,10 +31,9 @@ public class CalculadoraMenu extends JMenuBar {
     }
 
     /**
-     * Metodo que anyade un actionListener al item de salir
+     * Método que anyade un ActionListener al elemento de salir.
      * 
-     * @param actionListener
-     * 
+     * @param actionListener el ActionListener a anyadir
      */
     public void setActionListener(ActionListener actionListener) {
         exit.addActionListener(actionListener);

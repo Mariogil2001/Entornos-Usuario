@@ -18,6 +18,7 @@ public class Calculadora {
         
         CalculadoraModelo model = new CalculadoraModelo();
         CalculadoraVista view = new CalculadoraVista();
+        @SuppressWarnings("unused")
         CalculadoraControlador controller = new CalculadoraControlador(model, view);
 
         view.setVisible(true);

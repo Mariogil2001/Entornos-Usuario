@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 /**Clase Calculadora*/
 
 
+/**
+ * La clase CalculadoraVista representa la interfaz grafica de la calculadora.
+ * Extiende la clase JFrame y contiene los paneles necesarios para mostrar los elementos de la calculadora.
+ */
 public class CalculadoraVista extends JFrame {
     CalculadoraMenu menu; //EuroConversorMenu
     FuncionPanel funcionPanel; //ClearPanel
