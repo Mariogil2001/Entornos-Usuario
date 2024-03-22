@@ -10,7 +10,10 @@ import es.uv.eu.calculadora.vista.CalculadoraVista;
 
 /**
  *
- * @author 
+ * @author Mario Gil
+ * @author Daniel Breva
+ * @version 1.0
+ * 
  */
 public class Calculadora {
     

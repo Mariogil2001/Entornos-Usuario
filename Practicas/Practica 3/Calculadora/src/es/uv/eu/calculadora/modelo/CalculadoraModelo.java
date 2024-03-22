@@ -4,7 +4,10 @@ import java.util.ArrayList;
 
 /**
  *
- * @author
+ * @author Mario Gil
+ * @author Daniel Breva
+ * @version 1.0
+ * 
  */
 public final class CalculadoraModelo {
     

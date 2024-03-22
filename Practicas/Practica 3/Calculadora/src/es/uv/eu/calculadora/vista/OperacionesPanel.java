@@ -8,7 +8,10 @@ import java.awt.Color;
 
 /**
  *
- * @author
+ * @author Mario Gil
+ * @author Daniel Breva
+ * @version 1.0
+ * 
  */
 class OperacionesPanel extends JPanel {
 
