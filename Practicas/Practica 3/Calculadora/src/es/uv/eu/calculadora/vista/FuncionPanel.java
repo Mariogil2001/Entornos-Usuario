@@ -6,6 +6,7 @@ import javax.swing.JButton;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 
 /**
  *
@@ -29,6 +30,7 @@ class FuncionPanel extends JPanel {
     public FuncionPanel() {
         clearButton = new JButton("CLEAR");
         clearButton.setActionCommand("clear");
+        clearButton.setForeground(Color.BLUE);
         setLayout(new BorderLayout());
         add(clearButton,BorderLayout.SOUTH);
     }

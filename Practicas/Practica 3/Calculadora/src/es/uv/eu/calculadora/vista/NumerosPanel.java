@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 
 /**
  *
@@ -33,6 +34,7 @@ class NumerosPanel extends JPanel {
         add(decimalButton); // Anyadir boton decimal al panel (ultimo boton del panel)
         clearButton = new JButton("C");
         clearButton.setActionCommand("C");
+        clearButton.setForeground(Color.BLUE); // Cambiar el color del texto a azul
         add(clearButton); // Anyadir boton clear al panel (ultimo boton del panel)
     }
 

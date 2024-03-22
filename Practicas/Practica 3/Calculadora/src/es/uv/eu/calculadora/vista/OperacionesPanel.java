@@ -4,6 +4,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.awt.Color;
 
 /**
  *
@@ -24,6 +25,7 @@ class OperacionesPanel extends JPanel {
         for (int i = 0; i < 5; i++) {
             this.add(operaciones[i]);
             operaciones[i].setActionCommand(operaciones[i].getText());
+            operaciones[i].setForeground(Color.BLUE); // Cambiar el color del texto a azul
         }
     }
 

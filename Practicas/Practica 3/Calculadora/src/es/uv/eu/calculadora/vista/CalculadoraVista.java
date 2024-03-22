@@ -35,7 +35,7 @@ public class CalculadoraVista extends JFrame {
         this.add(numerosPanel, BorderLayout.WEST);
         this.add(operacionesPanel, BorderLayout.EAST);
         this.add(funcionPanel, BorderLayout.SOUTH);
-        this.setSize(300, 300);
+        this.setSize(230, 300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
