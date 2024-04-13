@@ -18,3 +18,4 @@ buildNumber.properties
 # Elimina todas las carpetas que empiezan por 'tema'
 tema*/
 *.zip
+*.rar
