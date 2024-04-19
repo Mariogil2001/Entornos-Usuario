@@ -1,67 +1,52 @@
 package es.uv.eu.photoeditor.view;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.event.ActionListener;
+import java.awt.GridLayout;
 
-public class ColorPanel extends JPanel {
-    private JButton[][] buttons;
-    private List<Color> colors;
-    private List<String> colorNames;
-
-    public ColorPanel() {
-        buttons = new JButton[7][7]; // Ajustar el tamaño según sea necesario
-
-        // Crear una lista de colores
-        colors = new ArrayList<>();
-        colors.add(Color.BLACK);
-        colors.add(Color.CYAN);
-        colors.add(Color.DARK_GRAY);
-        colors.add(Color.GRAY);
-        colors.add(Color.LIGHT_GRAY);
-        colors.add(Color.MAGENTA);
-        colors.add(Color.ORANGE);
-        colors.add(Color.PINK);
-        colors.add(Color.YELLOW);
-        colors.add(Color.WHITE);
-        colors.add(Color.RED);
-        colors.add(Color.BLUE);
-        colors.add(Color.GREEN);
-
-        // Crear una lista de nombres de colores
-        colorNames = new ArrayList<>();
-        colorNames.add("Negro");
-        colorNames.add("Cyan");
-        colorNames.add("Gris oscuro");
-        colorNames.add("Gris");
-        colorNames.add("Gris claro");
-        colorNames.add("Magenta");
-        colorNames.add("Naranja");
-        colorNames.add("Rosa");
-        colorNames.add("Amarillo");
-        colorNames.add("Blanco");
-        colorNames.add("Rojo");
-        colorNames.add("Azul");
-        colorNames.add("Verde");
-
-        // Inicializar y configurar los botones aquí
-        int colorIndex = 0;
-        for (int i = 0; i < buttons.length; i++) {
-            for (int j = 0; j < buttons[i].length; j++) {
-                Color color = colors.get(colorIndex % colors.size());
-                buttons[i][j] = new JButton();
-                
-                // Establecer el color de fondo del botón
-                buttons[i][j].setBackground(color);
-                
-                // Establecer el texto del botón para representar su color
-                buttons[i][j].setText(colorNames.get(colorIndex % colorNames.size()));
-
-                add(buttons[i][j]);
-                colorIndex++;
-            }
+public class ColorPanel extends JPanel{
+    private JLabel color;
+    private JButton[] botones;
+    private String[] etiquetabotones = {"Negro","Cyan","Gris oscuro", "Gris", "Gris claro", "Magenta", "Naranja", "Rosa", "Amarillo", 
+       "Blanco", "Rojo", "Azul", "Verde"};
+    private Color[] coloresbotones = {Color.BLACK,Color.CYAN, Color.DARK_GRAY, Color.GRAY, Color.LIGHT_GRAY, Color.MAGENTA,
+    Color.ORANGE, Color.PINK, Color.YELLOW, Color.WHITE, Color.RED, Color.BLUE, Color.GREEN};
+    
+    public ColorPanel(String nombre){
+        this.setLayout(new GridLayout(7,2,8,8));
+        botones = new JButton[13];
+        color = new JLabel(nombre);
+        Border borde = BorderFactory.createLineBorder(Color.GRAY,1);
+        this.setBorder(borde);
+        
+        
+        this.add(color);
+        
+        for(int i=0;i < 13; i++){
+           botones[i] = new JButton(etiquetabotones[i]);
+           botones[i].setBackground(coloresbotones[i]);
+           if(0==i || i==2 || i== 11){
+               botones[i].setForeground(Color.WHITE);
+           }
+           String cadena = i+"";
+           botones[i].setActionCommand(cadena);
+           this.add(botones[i]);
+        }
+    }
+    
+    public void SetLabel(String label){
+        color.setText(label);
+    }
+    
+    public void SetListener(ActionListener listener){
+        for (JButton botone : botones) {
+            botone.addActionListener(listener);
         }
     }
 }

@@ -16,8 +16,8 @@ public class SelectPanel extends JPanel{
     public SelectPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         lineWidthPanel = new LineWidthPanel();
-        colorPanel1 = new ColorPanel();
-        colorPanel2 = new ColorPanel();
+        colorPanel1 = new ColorPanel("Color 1");
+        colorPanel2 = new ColorPanel("Color 2");
         
         label1 = new JLabel("Color de linea");
         label2 = new JLabel("Color de relleno");
