@@ -6,7 +6,9 @@ import es.uv.eu.photoeditor.view.PhotoEditorView;
 
 /**
  *
- * @author Entornos de Usuario (2013)
+ * @author Mario Gil
+ * @author Daniel Breva
+ * @version 1.0
  */
 public class PhotoEditor {
 
@@ -16,6 +18,8 @@ public class PhotoEditor {
     public static void main(String[] args) {
         PhotoEditorModel model = new PhotoEditorModel();
         PhotoEditorView view = new PhotoEditorView(model);
+        @SuppressWarnings("unused")
         PhotoEditorController controlador = new PhotoEditorController(model, view);
+        view.setVisible(true);
     }
 }
