@@ -44,7 +44,7 @@ public class ColorPanel extends JPanel{
         color.setText(label);
     }
     
-    public void SetListener(ActionListener listener){
+    public void setListener(ActionListener listener){
         for (JButton botone : botones) {
             botone.addActionListener(listener);
         }

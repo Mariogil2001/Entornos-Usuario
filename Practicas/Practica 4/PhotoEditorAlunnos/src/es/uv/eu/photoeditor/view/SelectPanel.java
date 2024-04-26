@@ -1,6 +1,7 @@
 package es.uv.eu.photoeditor.view;
 
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -30,6 +31,14 @@ public class SelectPanel extends JPanel{
         
         setPreferredSize(new Dimension(200, 600)); // Ajusta estos valores según sea necesario
 
+    }
+    
+    public void setListener1(ActionListener listener){
+        colorPanel1.setListener(listener);
+    }
+    
+    public void setListener2(ActionListener listener){
+        colorPanel2.setListener(listener);
     }
 }
 

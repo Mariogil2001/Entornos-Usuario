@@ -1,9 +1,11 @@
 package es.uv.eu.photoeditor.view;
 
+import es.uv.eu.photoeditor.controller.PhotoEditorController;
 import es.uv.eu.photoeditor.model.PhotoEditorModel;
 import java.awt.BorderLayout;
 import javax.swing.event.ChangeListener;
 import java.awt.Color;
+import java.awt.event.ActionListener;
 
 
 import javax.swing.JFrame;
@@ -38,6 +40,7 @@ public class PhotoEditorView extends JFrame {
         
     }
 
+
     // Métodos getter para los paneles, si los necesitas
     public SelectPanel getSelectPanel() {
         return selectPanel;
@@ -66,5 +69,13 @@ public class PhotoEditorView extends JFrame {
     
     public void SetRelleno(Color color){
         statusPanel.setColorRelleno(color);
+    }
+
+    public void setBotonListener1(PhotoEditorController.BotonActionListener Listener) {
+        selectPanel.setListener1(Listener);
+    }
+
+    public void setBotonListener2(PhotoEditorController.BotonActionListener Listener) {
+        selectPanel.setListener2(Listener);    
     }
 }   
