@@ -2,6 +2,9 @@ package es.uv.eu.photoeditor.view;
 
 import es.uv.eu.photoeditor.model.PhotoEditorModel;
 import java.awt.BorderLayout;
+import javax.swing.event.ChangeListener;
+import java.awt.Color;
+
 
 import javax.swing.JFrame;
 
@@ -10,7 +13,9 @@ public class PhotoEditorView extends JFrame {
     private ImagenPanel imagenPanel;
     private StatusPanel statusPanel;
     private PhotoEditorMenuBar menuBar;
-
+    private LineWidthPanel widthpanel;
+    
+    
     public PhotoEditorView(PhotoEditorModel model) {
         super("Photo Editor");
         setLayout(new BorderLayout());
@@ -19,7 +24,9 @@ public class PhotoEditorView extends JFrame {
         selectPanel = new SelectPanel();
         imagenPanel = new ImagenPanel(model.getImagen());
         statusPanel = new StatusPanel();
-
+        widthpanel = new LineWidthPanel();
+       
+        
         setJMenuBar(menuBar);
         add(selectPanel, BorderLayout.WEST);
         add(imagenPanel, BorderLayout.CENTER);
@@ -28,6 +35,7 @@ public class PhotoEditorView extends JFrame {
 
         setSize(800,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
     }
 
     // Métodos getter para los paneles, si los necesitas
@@ -42,4 +50,21 @@ public class PhotoEditorView extends JFrame {
     public StatusPanel getStatusPanel() {
         return statusPanel;
     }
-}
+    
+    public void setMyChangeListener(ChangeListener change){
+        widthpanel.SetChangeListener(change);
+    }
+    
+    public void SetGrosor(int grosor)
+    {
+        statusPanel.setGrosor(grosor);
+    }
+    
+    public void SetColor(Color color){
+        statusPanel.setColorPincel(color);
+    }
+    
+    public void SetRelleno(Color color){
+        statusPanel.setColorRelleno(color);
+    }
+}   
