@@ -6,8 +6,6 @@ import java.awt.BorderLayout;
 import javax.swing.event.ChangeListener;
 import java.awt.Color;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-
 
 import javax.swing.JFrame;
 
@@ -60,6 +58,9 @@ public class PhotoEditorView extends JFrame {
     public void SetGrosor(String grosor)
     {
         statusPanel.setGrosor(grosor);
+    }
+    public int GetGrosor(){
+        return widthpanel.GetValue();
     }
     
     public void SetColor(Color color){

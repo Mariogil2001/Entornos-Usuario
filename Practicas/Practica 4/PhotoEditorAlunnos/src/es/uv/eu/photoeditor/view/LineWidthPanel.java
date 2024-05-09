@@ -6,6 +6,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.JSlider;
 
@@ -25,16 +26,27 @@ public class LineWidthPanel extends JPanel {
 
         add(label);
         add(slider);
-        
+
+        // Agregar un ChangeListener al JSlider
+        slider.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                JSlider source = (JSlider)e.getSource();
+                if (!source.getValueIsAdjusting()) {
+                    int value = source.getValue();
+                    // Aquí puedes hacer algo con el valor, como actualizar una etiqueta
+                    label.setText("Grosor del pincel: " + value);
+                }
+            }
+        });
         Border border = BorderFactory.createLineBorder(Color.GRAY, 1);
         setBorder(border);
     }
     
-        public void SetChangeListener(ChangeListener listener){
-            slider.addChangeListener(listener);
-        }
+    public void SetChangeListener(ChangeListener listener){
+        slider.addChangeListener(listener);
+    }
     
-        public int GetValue(){
-            return slider.getValue();
-        }
+    public int GetValue(){
+        return slider.getValue();
+    }
 }

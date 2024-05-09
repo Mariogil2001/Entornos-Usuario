@@ -1,6 +1,5 @@
 package es.uv.eu.photoeditor.view;
 
-import static java.awt.SystemColor.text;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Color;

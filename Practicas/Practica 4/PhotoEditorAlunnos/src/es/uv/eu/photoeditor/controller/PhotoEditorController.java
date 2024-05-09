@@ -5,6 +5,8 @@ import es.uv.eu.photoeditor.view.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -62,10 +64,21 @@ public class PhotoEditorController {
                 color2 = colores[Integer.parseInt(comand)];
                 vista.SetRelleno(color2);
             }
-            System.out.print(nombre);
-            System.out.print(comand);
+            System.out.println(comand);
+            // System.out.print(nombre);
+            // System.out.print(comand);
         }
         
+    }
+    
+    //Grosor del pincel
+    class ControllerChangeListener implements ChangeListener{
+
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            String g = String.valueOf(vista.GetGrosor());
+            vista.SetGrosor(g);
+        }
     }
     
      public class MyChangeListener implements ChangeListener{   
@@ -103,6 +116,9 @@ public class PhotoEditorController {
                     break;
                 case "Salir":
                     System.exit(0);
+                    break;
+                case "Ayuda":
+                    JOptionPane.showMessageDialog(vista, "Practica 4. Hecha por Mario Gil y Daniel Breva");
                     break;
                 default:
                     System.err.println("Acción no reconocida: " + command);

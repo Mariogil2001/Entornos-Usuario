@@ -18,29 +18,38 @@ public class PhotoEditorMenuBar extends JMenuBar {
     private JMenuItem cargarImagenMenuItem;
     private JMenuItem guardarImagenMenuItem;
     private JMenuItem salirMenuItem;
+    private JMenuItem ayudaMenuItem; // Nuevo JMenuItem para "Ayuda"
+    private JMenu help;
 
     public PhotoEditorMenuBar() {
         JMenu archivoMenu = new JMenu("Archivo");
+        help = new JMenu("Ayuda");
 
         cargarImagenMenuItem = new JMenuItem("Cargar imagen");
         guardarImagenMenuItem = new JMenuItem("Guardar imagen");
         salirMenuItem = new JMenuItem("Salir");
+        ayudaMenuItem = new JMenuItem("Ayuda"); // Inicializar el JMenuItem "Ayuda"
 
         cargarImagenMenuItem.setActionCommand("Cargar");
         guardarImagenMenuItem.setActionCommand("Guardar");
         salirMenuItem.setActionCommand("Salir");
+        ayudaMenuItem.setActionCommand("Ayuda"); // Establecer el comando de acción para "Ayuda"
 
         archivoMenu.add(cargarImagenMenuItem);
         archivoMenu.add(guardarImagenMenuItem);
         archivoMenu.addSeparator();
         archivoMenu.add(salirMenuItem);
 
+        help.add(ayudaMenuItem); // Agregar el JMenuItem "Ayuda" al JMenu "Ayuda"
+
         add(archivoMenu);
+        add(help);
     }
 
     public void setMyActionListener(ActionListener listener){
         cargarImagenMenuItem.addActionListener(listener);
         guardarImagenMenuItem.addActionListener(listener);
         salirMenuItem.addActionListener(listener);
+        ayudaMenuItem.addActionListener(listener); // Agregar el ActionListener al JMenuItem "Ayuda"
     }
 }
