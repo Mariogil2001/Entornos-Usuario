@@ -6,7 +6,7 @@ package es.uv.eu.photoeditor.controller;
 
 /**
  *
- * @author Elver Galarga
+ * @author Dani Breva
  */
 class BotonActionListener {
     

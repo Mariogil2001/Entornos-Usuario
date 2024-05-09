@@ -6,16 +6,18 @@ import java.awt.BorderLayout;
 import javax.swing.event.ChangeListener;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 
 import javax.swing.JFrame;
 
 public class PhotoEditorView extends JFrame {
-    private SelectPanel selectPanel;
+    
+    private SelectPanel selectPanel = new SelectPanel();
     private ImagenPanel imagenPanel;
-    private StatusPanel statusPanel;
-    private PhotoEditorMenuBar menuBar;
-    private LineWidthPanel widthpanel;
+    private StatusPanel statusPanel = new StatusPanel();
+    private PhotoEditorMenuBar menuBar = new PhotoEditorMenuBar();
+    private LineWidthPanel widthpanel = new LineWidthPanel();
     
     
     public PhotoEditorView(PhotoEditorModel model) {
@@ -24,17 +26,17 @@ public class PhotoEditorView extends JFrame {
 
         menuBar = new PhotoEditorMenuBar();
         selectPanel = new SelectPanel();
-        imagenPanel = new ImagenPanel(model.getImagen());
+        imagenPanel = new ImagenPanel(model);
         statusPanel = new StatusPanel();
         widthpanel = new LineWidthPanel();
+       
        
         
         setJMenuBar(menuBar);
         add(selectPanel, BorderLayout.WEST);
         add(imagenPanel, BorderLayout.CENTER);
-        add(imagenPanel, BorderLayout.EAST);
         add(statusPanel, BorderLayout.SOUTH);
-
+        setVisible(true);
         setSize(800,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -54,11 +56,8 @@ public class PhotoEditorView extends JFrame {
         return statusPanel;
     }
     
-    public void setMyChangeListener(ChangeListener change){
-        widthpanel.SetChangeListener(change);
-    }
-    
-    public void SetGrosor(int grosor)
+
+    public void SetGrosor(String grosor)
     {
         statusPanel.setGrosor(grosor);
     }
@@ -77,5 +76,17 @@ public class PhotoEditorView extends JFrame {
 
     public void setBotonListener2(PhotoEditorController.BotonActionListener Listener) {
         selectPanel.setListener2(Listener);    
+    }
+    
+    public void setMyChangeListener(ChangeListener change){
+        widthpanel.SetChangeListener(change);
+    }
+    
+    public void setPhotoEditorModel(PhotoEditorModel modelo){
+        imagenPanel.setModelo(modelo);
+    }
+
+    public void setMenuListener(ActionListener listener){
+        menuBar.setMyActionListener(listener);
     }
 }   

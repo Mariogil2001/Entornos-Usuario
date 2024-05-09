@@ -9,17 +9,17 @@ import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
 public class StatusPanel extends JPanel {
-    private JLabel lineWidthLabel;
-    private JLabel borderColorLabel;
-    private JLabel backgroundColorLabel;
-    JLabel grosor;
-    JLabel color;
-    JLabel colorrelleno;
+    private JLabel lineWidthLabel = new JLabel();
+    private JLabel borderColorLabel = new JLabel();
+    private JLabel backgroundColorLabel = new JLabel();
+    private JLabel grosor = new JLabel();
+    private JLabel color = new JLabel();
+    private JLabel colorrelleno = new JLabel();
     
     
     public StatusPanel() {
         lineWidthLabel = new JLabel("Grosor del Pincel: ", JLabel.LEFT);
-        grosor = new JLabel();
+        grosor = new JLabel("5", JLabel.CENTER);
         grosor.setPreferredSize((new Dimension(40, 20)));
         Border borde = BorderFactory.createLineBorder(Color.black,1);
         grosor.setBorder(borde);
@@ -52,8 +52,8 @@ public class StatusPanel extends JPanel {
         this.setBorder(border);
     }
 
-    public void setGrosor(int tamgrosor) {
-        grosor = new JLabel(String.valueOf(tamgrosor));
+    public void setGrosor(String tamgrosor) {
+        grosor.setText(tamgrosor);
     }
 
     public void setColorPincel(Color colorpincel) {

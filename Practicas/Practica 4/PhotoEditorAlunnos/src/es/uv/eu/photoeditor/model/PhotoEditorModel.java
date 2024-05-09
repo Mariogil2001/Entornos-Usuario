@@ -28,6 +28,7 @@ public class PhotoEditorModel {
         }
     }
 
+
     public BufferedImage getImagen() {
         return imagen;
     }

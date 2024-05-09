@@ -2,7 +2,6 @@ package es.uv.eu.photoeditor.view;
 
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
-
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,11 +16,11 @@ public class SelectPanel extends JPanel{
     public SelectPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         lineWidthPanel = new LineWidthPanel();
-        colorPanel1 = new ColorPanel("Color 1");
-        colorPanel2 = new ColorPanel("Color 2");
+        colorPanel1 = new ColorPanel("Color de linea: ");
+        colorPanel2 = new ColorPanel("Color de relleno: ");
         
-        label1 = new JLabel("Color de linea");
-        label2 = new JLabel("Color de relleno");
+        label1 = new JLabel(" ", JLabel.CENTER);
+        label2 = new JLabel(" ", JLabel.CENTER);
         // Registrar oyentes aquí
         add(lineWidthPanel);
         add(label1);
@@ -29,7 +28,7 @@ public class SelectPanel extends JPanel{
         add(label2);
         add(colorPanel2);
         
-        setPreferredSize(new Dimension(200, 600)); // Ajusta estos valores según sea necesario
+        setPreferredSize(new Dimension(200, 200)); // Ajusta estos valores según sea necesario
 
     }
     

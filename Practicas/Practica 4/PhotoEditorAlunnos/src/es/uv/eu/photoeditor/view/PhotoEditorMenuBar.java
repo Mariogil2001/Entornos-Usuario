@@ -3,6 +3,8 @@ package es.uv.eu.photoeditor.view;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+
 
 /**
  * Es la barra de menú (no se muestra en la figura) y deriva de la clase
@@ -24,6 +26,10 @@ public class PhotoEditorMenuBar extends JMenuBar {
         guardarImagenMenuItem = new JMenuItem("Guardar imagen");
         salirMenuItem = new JMenuItem("Salir");
 
+        cargarImagenMenuItem.setActionCommand("Cargar");
+        guardarImagenMenuItem.setActionCommand("Guardar");
+        salirMenuItem.setActionCommand("Salir");
+
         archivoMenu.add(cargarImagenMenuItem);
         archivoMenu.add(guardarImagenMenuItem);
         archivoMenu.addSeparator();
@@ -32,15 +38,9 @@ public class PhotoEditorMenuBar extends JMenuBar {
         add(archivoMenu);
     }
 
-    public JMenuItem getCargarImagenMenuItem() {
-        return cargarImagenMenuItem;
-    }
-
-    public JMenuItem getGuardarImagenMenuItem() {
-        return guardarImagenMenuItem;
-    }
-
-    public JMenuItem getSalirMenuItem() {
-        return salirMenuItem;
+    public void setMyActionListener(ActionListener listener){
+        cargarImagenMenuItem.addActionListener(listener);
+        guardarImagenMenuItem.addActionListener(listener);
+        salirMenuItem.addActionListener(listener);
     }
 }

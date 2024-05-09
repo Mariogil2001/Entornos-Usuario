@@ -1,7 +1,6 @@
 package es.uv.eu.photoeditor.view;
 
 import java.awt.Color;
-import java.util.Hashtable;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -11,8 +10,8 @@ import javax.swing.event.ChangeListener;
 import javax.swing.JSlider;
 
 public class LineWidthPanel extends JPanel {
-    private JLabel label;
-    private JSlider slider;
+    private JLabel label = new JLabel();
+    private JSlider slider = new JSlider();
 
     public LineWidthPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -22,13 +21,8 @@ public class LineWidthPanel extends JPanel {
         slider.setMinorTickSpacing(1); // Establecer el espaciado de los ticks menores
         slider.setPaintTicks(true); // Habilitar la pintura de los ticks
         slider.setPaintLabels(true); // Habilitar la pintura de las etiquetas
-        
-        Hashtable<Integer, JLabel> labelTable = new Hashtable<>();
-        for (int i = 1; i <= 10; i++) {
-            labelTable.put(i, new JLabel(String.valueOf(i)));
-        }
-        slider.setLabelTable(labelTable);
-        
+        slider.setPaintTrack(true);
+
         add(label);
         add(slider);
         

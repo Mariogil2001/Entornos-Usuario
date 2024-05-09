@@ -5,15 +5,18 @@ import es.uv.eu.photoeditor.view.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 public class PhotoEditorController {
     private PhotoEditorModel modelo;
     private PhotoEditorView vista;
+    private LineWidthPanel slider;
     LoadImage Load;
     SaveImage save;
     Color color1,color2;
-    int grosor, x1, y1,x2,y2;
+    int grosorint, x1, y1,x2,y2;
     
     public PhotoEditorController(PhotoEditorModel modelo, PhotoEditorView vista) {
         this.modelo = modelo;
@@ -21,21 +24,21 @@ public class PhotoEditorController {
         this.color1 = Color.RED;
         this.color2 = Color.RED;
         
-        
+
         BotonActionListener BotonActionlistener1 = new BotonActionListener("1");
         vista.setBotonListener1(BotonActionlistener1);
         
         BotonActionListener BotonActionListener2 = new BotonActionListener("2");
         vista.setBotonListener2(BotonActionListener2);
         
-        //MenuActionListener MenuListener = new MenuActionListener();
-        //vista.setMenuListener(MenuListener);
+        MenuActionListener MenuListener = new MenuActionListener();
+        vista.setMenuListener(MenuListener);
         
-        //MyChangeListener SliderListener = new MyChangeListener();
-        //vista.setMyChangeListener(SliderListener);
+        MyChangeListener SliderListener = new MyChangeListener();
+        vista.setMyChangeListener(SliderListener);
         
         
-        //vista.setPhotoEditorModel(modelo);
+        vista.setPhotoEditorModel(modelo);
     }
     
      public class BotonActionListener implements ActionListener{
@@ -65,4 +68,49 @@ public class PhotoEditorController {
         
     }
     
+     public class MyChangeListener implements ChangeListener{   
+        public MyChangeListener(){
+            
+        }
+           
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            System.out.print("Entra");
+            grosorint = slider.GetValue();
+            vista.SetGrosor(String.valueOf(grosorint));
+            
+        }
+        
+    }
+
+    public class MenuActionListener implements ActionListener{
+        
+        public MenuActionListener(){
+            
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String command = e.getActionCommand();
+            switch(command) {
+                case "Cargar":
+                    LoadImage loadImage = new LoadImage();
+                    modelo.loadImagen(loadImage.getFile());
+                    vista.repaint();
+                    break;
+                case "Guardar":
+                    SaveImage saveImage = new SaveImage();
+                    modelo.saveImagen(saveImage.getFile());
+                    break;
+                case "Salir":
+                    System.exit(0);
+                    break;
+                default:
+                    System.err.println("Acción no reconocida: " + command);
+                    break;
+            }
+        }
+
+        
+    }
+     
 }
