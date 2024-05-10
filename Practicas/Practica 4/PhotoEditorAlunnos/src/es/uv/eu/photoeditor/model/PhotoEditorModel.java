@@ -3,8 +3,9 @@ package es.uv.eu.photoeditor.model;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Polygon;
+import java.awt.GradientPaint;
 import java.awt.image.BufferedImage;
+import java.awt.geom.Line2D;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -63,12 +64,17 @@ public class PhotoEditorModel {
         }
     }
     
-    public void pintaPoligono(Polygon poly, int penWidth, Color penColor, Color fillColor) {
+    public void pintalinea(int x1, int y1, int x2, int y2, Color penColor, Color fillColor) {
         Graphics2D gr = (Graphics2D)imagen.getGraphics();
         gr.setColor(fillColor);
-        gr.fillPolygon(poly);
+        GradientPaint gradiente= new GradientPaint(0,0,fillColor, 175,175, penColor, true);
+
         gr.setColor(penColor);
-        gr.setStroke(new BasicStroke(penWidth));
-        gr.drawPolygon(poly);
+        gr.setStroke(new BasicStroke(penColor.getRGB()));
+        gr.drawLine(x1, y1, x2, y2);
+
+        gr.setPaint(gradiente);
+
+        gr.draw(new Line2D.Double(x1,y1,x2,y2));
     }
 }

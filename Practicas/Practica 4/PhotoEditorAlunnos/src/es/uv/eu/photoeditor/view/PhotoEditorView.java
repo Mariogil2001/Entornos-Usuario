@@ -90,4 +90,5 @@ public class PhotoEditorView extends JFrame {
     public void setMenuListener(ActionListener listener){
         menuBar.setMyActionListener(listener);
     }
+
 }   

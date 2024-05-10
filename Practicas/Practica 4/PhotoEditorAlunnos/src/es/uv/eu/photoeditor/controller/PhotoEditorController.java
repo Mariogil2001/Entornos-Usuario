@@ -3,12 +3,18 @@ package es.uv.eu.photoeditor.controller;
 import es.uv.eu.photoeditor.model.PhotoEditorModel;
 import es.uv.eu.photoeditor.view.*;
 import java.awt.Color;
+import java.awt.Polygon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+
+
 
 
 public class PhotoEditorController {
@@ -127,6 +133,58 @@ public class PhotoEditorController {
         }
 
         
+    }
+
+    public class MyMouseListener implements MouseListener{
+        int cuentaclicks;
+        Polygon poligono;
+        public MyMouseListener(){
+            cuentaclicks = 0;
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+          
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            System.out.println("BotonPulsado");
+            int button = e.getButton();
+            if(button == MouseEvent.BUTTON1){
+                if(cuentaclicks ==0){
+                    x1 = e.getX();
+                    y1 = e.getY();
+                    cuentaclicks++;
+                    System.out.println("Primer click");
+                } else{
+                    x2 = e.getX();
+                    y2 = e.getY();
+                    cuentaclicks = 0;
+                    modelo.pintalinea(x1, y1, x2, y2, color1, color2);
+                    vista.repaint();
+                    System.out.println("Segundo click");
+                }
+            } else if (button == MouseEvent.BUTTON3){
+                color2=color1;
+                vista.SetRelleno(color2);
+            }
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
     }
      
 }
