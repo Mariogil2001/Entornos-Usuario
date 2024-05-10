@@ -60,7 +60,7 @@ public class PhotoEditorView extends JFrame {
         statusPanel.setGrosor(grosor);
     }
     public int GetGrosor(){
-        return widthpanel.GetValue();
+        return widthpanel.getGrosor();
     }
     
     public void SetColor(Color color){

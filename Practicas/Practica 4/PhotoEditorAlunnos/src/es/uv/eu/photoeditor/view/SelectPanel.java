@@ -32,6 +32,10 @@ public class SelectPanel extends JPanel{
 
     }
     
+    public int getGrosor(){
+        return lineWidthPanel.getGrosor();
+    }
+
     public void setListener1(ActionListener listener){
         colorPanel1.setListener(listener);
     }

@@ -28,16 +28,16 @@ public class LineWidthPanel extends JPanel {
         add(slider);
 
         // Agregar un ChangeListener al JSlider
-        slider.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                JSlider source = (JSlider)e.getSource();
-                if (!source.getValueIsAdjusting()) {
-                    int value = source.getValue();
-                    // Aquí puedes hacer algo con el valor, como actualizar una etiqueta
-                    label.setText("Grosor del pincel: " + value);
-                }
-            }
-        });
+        // slider.addChangeListener(new ChangeListener() {
+        //     public void stateChanged(ChangeEvent e) {
+        //         JSlider source = (JSlider)e.getSource();
+        //         if (!source.getValueIsAdjusting()) {
+        //             int value = source.getValue();
+        //             // Aquí puedes hacer algo con el valor, como actualizar una etiqueta
+        //             label.setText("Grosor del pincel: " + value);
+        //         }
+        //     }
+        // });
         Border border = BorderFactory.createLineBorder(Color.GRAY, 1);
         setBorder(border);
     }
@@ -45,8 +45,12 @@ public class LineWidthPanel extends JPanel {
     public void SetChangeListener(ChangeListener listener){
         slider.addChangeListener(listener);
     }
+
+    public void SetGrosor(int value){
+        label.setText("Grosor del pincel: " + value);
+    }
     
-    public int GetValue(){
+    public int getGrosor(){
         return slider.getValue();
     }
 }

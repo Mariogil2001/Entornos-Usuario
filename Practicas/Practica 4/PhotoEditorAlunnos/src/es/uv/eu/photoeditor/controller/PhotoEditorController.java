@@ -95,7 +95,7 @@ public class PhotoEditorController {
         @Override
         public void stateChanged(ChangeEvent e) {
             System.out.print("Entra");
-            grosorint = slider.GetValue();
+            grosorint = vista.GetGrosor();
             vista.SetGrosor(String.valueOf(grosorint));
             
         }
