@@ -22,7 +22,7 @@ public class FruitMachineModel {
         nums = new int[3];
         for(int i = 0; i < 3; i++){
             nums[i] = (int)(Math.random() * 7); // Genera un número aleatorio entre 0 y 9
-            // System.out.println(nums[i]);
+            System.out.println(nums[i]);
         }
     }
 }
