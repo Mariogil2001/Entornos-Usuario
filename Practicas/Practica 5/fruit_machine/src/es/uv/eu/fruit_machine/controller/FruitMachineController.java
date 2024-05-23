@@ -12,10 +12,12 @@ public class FruitMachineController {
 
     private FruitMachineView view;
     private FruitMachineModel model;
+    private PanelPrincipalView panelPrincipalView;
 
-    public FruitMachineController(FruitMachineView view, FruitMachineModel model) {
+    public FruitMachineController(PanelPrincipalView panelPrincipalView, FruitMachineView view, FruitMachineModel model) {
         this.view = view;
         this.model = model;
+        this.panelPrincipalView = panelPrincipalView;
 
         MenuActionListener MenuListener = new MenuActionListener();
         PanelSaldoActionListener PanelSaldoListener = new PanelSaldoActionListener();
@@ -24,6 +26,8 @@ public class FruitMachineController {
         view.setPanelPalancaListener(PanelPalancaListener);
         view.setPanelSaldoListener(PanelSaldoListener);
         view.setMenuListener(MenuListener);
+        panelPrincipalView.setMenuListener(MenuListener);
+        panelPrincipalView.setPanelSaldoListener(PanelSaldoListener);
     }
 
     /**
@@ -51,7 +55,12 @@ public class FruitMachineController {
                     System.out.println("Salir");
                     System.exit(0);
                     break;
-
+                
+                case "Jugar":
+                    panelPrincipalView.setVisible(false);
+                    view.setVisible(true);
+                    break;
+                    
                 default:
                     System.err.println("Acción no reconocida: " + command);
                     break;
@@ -86,6 +95,7 @@ public class FruitMachineController {
                     System.out.println("No implementado");
 
                 default:
+                System.err.println("Acción no reconocida: " + command);
                     break;
             }
 
