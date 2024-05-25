@@ -5,9 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import es.uv.eu.fruit_machine.model.FruitMachineModel;
 
+
 public class PanelPrincipalView extends JFrame {
     
     private PanelPrincipal panelprincipal;
+    private FruitMachineMenuBar menuBar;
 
     public PanelPrincipalView(FruitMachineModel model) {
         setLayout(new BorderLayout());
@@ -16,16 +18,25 @@ public class PanelPrincipalView extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); 
         
-        panelprincipal = new PanelPrincipal();
+        panelprincipal = new PanelPrincipal(model);
         panelprincipal.setModelo(model);  // Pasa el modelo al PanelPrincipal
+
+        menuBar = new FruitMachineMenuBar();
+        setJMenuBar(menuBar);
         add(panelprincipal, BorderLayout.CENTER);
+    
     }
     
-    public void setMenuListener(ActionListener listener) {
+    public void setPrincipalListener(ActionListener listener) {
         panelprincipal.setMyActionListener(listener);
     }
     
     public void setPanelSaldoListener(ActionListener listener) {
-        panelprincipal.setActionListener(listener);
+        panelprincipal.setMyActionListener(listener);
     }
+
+    public void setMenuListener(ActionListener listener){
+        menuBar.setMyActionListener(listener);
+    }
+
 }

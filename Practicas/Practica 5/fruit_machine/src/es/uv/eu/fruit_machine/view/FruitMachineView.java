@@ -52,4 +52,5 @@ public class FruitMachineView extends JFrame{
     public void setPanelSaldoListener(ActionListener listener){
         panelSaldo.setActionListener(listener);
     }
+
 }

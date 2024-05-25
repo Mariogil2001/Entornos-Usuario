@@ -24,8 +24,11 @@ public class PanelPrincipal extends JPanel implements Observer {
     private FruitMachineModel model;
     private BufferedImage logo;
 
-    public PanelPrincipal() {
+    public PanelPrincipal(FruitMachineModel model) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        this.model = model;
+        this.model.addObserver(this); // Registra este panel como observador del modelo
 
         try {
             logo = ImageIO.read(new File("./imagenes/header_fruit.jpg"));
@@ -84,6 +87,9 @@ public class PanelPrincipal extends JPanel implements Observer {
         add(botonesPanel);
         add(Box.createRigidArea(new Dimension(0, 20)));
         
+        
+        update(model);
+        repaint(); 
     }
 
     
@@ -98,8 +104,9 @@ public class PanelPrincipal extends JPanel implements Observer {
     }
 
     public void setMyActionListener(ActionListener listener){
-        jugarButton.addActionListener(listener);
+        jugarButton.addActionListener(listener);  
         salirButton.addActionListener(listener);
+        anadirSaldoButton.addActionListener(listener);
     }
     public void setActionListener(ActionListener listener){
         anadirSaldoButton.addActionListener(listener);
@@ -116,7 +123,9 @@ public class PanelPrincipal extends JPanel implements Observer {
 
     @Override
     public void update(FruitMachineModel model) {
-        saldo = new JLabel("Saldo: " + model.getSaldo());
+        saldo.setText("Saldo: " + model.getSaldo()); // Actualiza el texto del JLabel existente
+        revalidate();
+        repaint();
     }
 
     

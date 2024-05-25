@@ -2,7 +2,6 @@ package es.uv.eu.fruit_machine.controller;
 
 import es.uv.eu.fruit_machine.view.*;
 import es.uv.eu.fruit_machine.model.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,15 +17,18 @@ public class FruitMachineController {
         this.view = view;
         this.model = model;
         this.panelPrincipalView = panelPrincipalView;
+        
 
         MenuActionListener MenuListener = new MenuActionListener();
         PanelSaldoActionListener PanelSaldoListener = new PanelSaldoActionListener();
         PanelPalancaActionListener PanelPalancaListener = new PanelPalancaActionListener();
+        PrincipalActionListener PrincipalListener = new PrincipalActionListener();
 
         view.setPanelPalancaListener(PanelPalancaListener);
         view.setPanelSaldoListener(PanelSaldoListener);
         view.setMenuListener(MenuListener);
         panelPrincipalView.setMenuListener(MenuListener);
+        panelPrincipalView.setPrincipalListener(PrincipalListener);
         panelPrincipalView.setPanelSaldoListener(PanelSaldoListener);
     }
 
@@ -68,7 +70,35 @@ public class FruitMachineController {
         }
     }
 
-    
+    public class PrincipalActionListener implements ActionListener {
+        public PrincipalActionListener() {
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            String command = e.getActionCommand();
+            switch (command) {
+                case "Jugar":
+                    panelPrincipalView.setVisible(false);
+                    System.out.println("Jugar");
+                    view.setVisible(true);
+                    break;
+                case "salir":
+                    System.out.println("Salir");
+                    System.exit(0);
+                    break;
+                
+                case "aumentarSaldo":
+                    
+                    panelPrincipalView.repaint();
+                    break;
+
+                default:
+                    System.err.println("Acción no reconocida: " + command);
+                    break;
+            }
+
+        }
+    }
 
 
     public class PanelSaldoActionListener implements ActionListener {
@@ -89,7 +119,7 @@ public class FruitMachineController {
                         System.out.println("Aumentar saldo en " + amount);
                         model.aumentarSaldo(amount);
                         model.notifyObservers();  // Notificar a los observadores
-
+                        
                         } else {
                             JOptionPane.showMessageDialog(null, "La cantidad debe ser mayor que 0.", "Error", JOptionPane.ERROR_MESSAGE);
                         }
@@ -99,6 +129,7 @@ public class FruitMachineController {
                                 "Error", JOptionPane.ERROR_MESSAGE);
                     }
                     view.repaint();
+                    panelPrincipalView.repaint();
                     break;
 
                 case "retirarSaldo":
