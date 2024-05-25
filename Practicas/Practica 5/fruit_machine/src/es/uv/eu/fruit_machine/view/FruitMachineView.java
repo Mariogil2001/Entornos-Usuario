@@ -34,8 +34,10 @@ public class FruitMachineView extends JFrame{
         add(panelSaldo, BorderLayout.EAST);
         add(panelPalanca, BorderLayout.SOUTH);
         
+        
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); 
     }
 
     public void setMenuListener(ActionListener listener){

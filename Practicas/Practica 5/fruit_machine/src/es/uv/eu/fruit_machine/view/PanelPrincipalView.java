@@ -14,7 +14,7 @@ public class PanelPrincipalView extends JFrame {
         setTitle("Panel Principal View");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); 
         
         panelprincipal = new PanelPrincipal();
         panelprincipal.setModelo(model);  // Pasa el modelo al PanelPrincipal
