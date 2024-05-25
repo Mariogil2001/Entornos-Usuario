@@ -21,7 +21,7 @@ public class ImagenPanel extends JPanel{
        
         this.setSize(500,500);
         this.setVisible(true);
-
+        setBackground(Color.GRAY);
         Border borde = BorderFactory.createLineBorder(Color.BLACK, 5);
         this.setBorder(borde);
     }

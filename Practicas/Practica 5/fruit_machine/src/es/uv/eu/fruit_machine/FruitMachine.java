@@ -7,7 +7,7 @@ import es.uv.eu.fruit_machine.model.FruitMachineModel;
 
 public class FruitMachine {
     public static void main(String[] args) {
-        PanelPrincipalView panelPrincipal = new PanelPrincipalView();
+        PanelPrincipalView panelPrincipal = new PanelPrincipalView(new FruitMachineModel());
         panelPrincipal.setVisible(true);
         FruitMachineModel model = new FruitMachineModel();
         FruitMachineView view = new FruitMachineView(model);

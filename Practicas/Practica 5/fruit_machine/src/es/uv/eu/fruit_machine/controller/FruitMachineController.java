@@ -68,6 +68,9 @@ public class FruitMachineController {
         }
     }
 
+    
+
+
     public class PanelSaldoActionListener implements ActionListener {
         public PanelSaldoActionListener() {
         }
@@ -81,8 +84,15 @@ public class FruitMachineController {
                     try {
 
                         int amount = Integer.parseInt(inputValue);
+
+                        if (amount > 0) {
                         System.out.println("Aumentar saldo en " + amount);
                         model.aumentarSaldo(amount);
+                        model.notifyObservers();  // Notificar a los observadores
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "La cantidad debe ser mayor que 0.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
 
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(null, "Entrada inválida. Por favor, introduce un número entero.",
@@ -92,7 +102,16 @@ public class FruitMachineController {
                     break;
 
                 case "retirarSaldo":
-                    System.out.println("No implementado");
+                    int currentSaldo = model.getSaldo();
+                    if (currentSaldo > 0) {
+                        model.setSaldo(0);  // Dejar el saldo a 0
+                        JOptionPane.showMessageDialog(null, "Ha retirado: " + currentSaldo, "Retiro de saldo", JOptionPane.INFORMATION_MESSAGE);
+                        model.notifyObservers();  // Notificar a los observadores
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El saldo ya es 0.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    view.repaint();
+                    break;
 
                 default:
                 System.err.println("Acción no reconocida: " + command);
@@ -111,7 +130,7 @@ public class FruitMachineController {
             String command = e.getActionCommand();
             switch (command) {
                 case "palanca":
-                    if (model.getSaldo() > 1) {
+                    if (model.getSaldo() >= 1) {
                         model.setSaldo(model.getSaldo() - 1);
                         model.tirada();
                         view.repaint();
@@ -124,4 +143,6 @@ public class FruitMachineController {
         }
 
     }
+
+
 }

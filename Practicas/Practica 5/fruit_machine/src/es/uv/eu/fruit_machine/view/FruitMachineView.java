@@ -14,7 +14,7 @@ import es.uv.eu.fruit_machine.model.FruitMachineModel;
 public class FruitMachineView extends JFrame{
     
     private FruitMachineMenuBar menuBar;
-
+    
     private ImagenPanel imagenPanel;
 
     private PanelSaldo panelSaldo;

@@ -17,7 +17,7 @@ public class FruitMachineModel {
     private List<Observer> observers;
 
     public FruitMachineModel(){
-        this.saldo = 100;
+        this.saldo = 0;
         this.images = new BufferedImage[3];
         this.imagenFileNames = new String[3];
         this.observers = new ArrayList<>(); // Inicializa la lista de observadores
@@ -67,6 +67,7 @@ public class FruitMachineModel {
 
     public void aumentarSaldo(int amount) {
         this.saldo += amount;
+        notifyObservers();
     }
 
     public int getSaldo() {

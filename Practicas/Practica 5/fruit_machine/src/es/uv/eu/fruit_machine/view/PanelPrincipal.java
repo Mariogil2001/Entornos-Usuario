@@ -1,43 +1,63 @@
 package es.uv.eu.fruit_machine.view;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
+
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
-public class PanelPrincipal extends JPanel {
+import es.uv.eu.fruit_machine.model.FruitMachineModel;
+import es.uv.eu.fruit_machine.model.FruitMachineModel.Observer; // Importa la interfaz Observer correcta
+
+public class PanelPrincipal extends JPanel implements Observer {
     
     private JLabel nombre;
     private JTextArea nombreusuario;
     private JLabel tematica;
     private JComboBox<String> tematicalista;
-    private JCheckBox asistente; // Declarar el JCheckBox
+    private JCheckBox asistente;
     private JLabel saldo;
     private JButton jugarButton, salirButton, anadirSaldoButton;
+    private FruitMachineModel model;
+    private BufferedImage logo;
 
     public PanelPrincipal() {
-        // Configurar el panel principal con BoxLayout en eje Y (vertical)
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        // Crear el JLabel y JTextArea para el nombre
+        try {
+            logo = ImageIO.read(new File("./imagenes/header_fruit.jpg"));
+        } catch (Exception e) {
+            System.out.println("Error al cargar la imagen");
+        }
+
+        // Crea un JLabel con la imagen si la imagen se cargó correctamente
+        if (logo != null) {
+            JLabel imagenLabel = new JLabel(new ImageIcon(logo));
+            imagenLabel.setAlignmentX(CENTER_ALIGNMENT);
+            add(Box.createRigidArea(new Dimension(0, 30)));
+            add(imagenLabel, BorderLayout.CENTER);
+        }
+        
         nombre = new JLabel("Nombre: ");
-        nombreusuario = new JTextArea(1, 20); // Ajustar el tamaño a una sola línea de texto
+        nombreusuario = new JTextArea(1, 20);
         nombreusuario.setLineWrap(true);
         nombreusuario.setWrapStyleWord(true);
         JScrollPane scrollPane = new JScrollPane(nombreusuario);
-        scrollPane.setPreferredSize(new Dimension(200, 20)); // Ajustar el tamaño preferido del JScrollPane
+        scrollPane.setPreferredSize(new Dimension(200, 20));
 
-        // Crear el JLabel y JComboBox para la temática
         tematica = new JLabel("Temática: ");
         String[] opciones = {"Frutas", "Comidas", "Coches"};
         tematicalista = new JComboBox<>(opciones);
 
-        // Crear el JCheckBox para el asistente
         asistente = new JCheckBox("Asistente");
+        asistente.setAlignmentX(CENTER_ALIGNMENT);
 
-        // Crear el JLabel para el saldo
         saldo = new JLabel("Saldo: ");
+        saldo.setAlignmentX(CENTER_ALIGNMENT);
 
-        // Crear los botones
         jugarButton = new JButton("Jugar");
         jugarButton.setActionCommand("Jugar");
         salirButton = new JButton("Salir");
@@ -45,35 +65,38 @@ public class PanelPrincipal extends JPanel {
         anadirSaldoButton = new JButton("Añadir Saldo");
         anadirSaldoButton.setActionCommand("aumentarSaldo");
 
-        // Crear el panel de botones y agregar los botones
         JPanel botonesPanel = new JPanel();
         botonesPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        botonesPanel.setOpaque(false); // Para que el fondo del panel sea transparente
         botonesPanel.add(jugarButton);
         botonesPanel.add(salirButton);
         botonesPanel.add(anadirSaldoButton);
-
-        // Agregar los componentes al panel con BoxLayout
-        add(Box.createRigidArea(new Dimension(0, 50))); // Añadir espacio vertical fijo al principio para aumentar el espacio inicial
+        
+        add(Box.createRigidArea(new Dimension(0, 30)));
         add(createHorizontalPanel(nombre, scrollPane));
-        add(Box.createRigidArea(new Dimension(0, 10))); // Añadir espacio vertical fijo entre los componentes
+        add(Box.createRigidArea(new Dimension(0, 10)));
         add(createHorizontalPanel(tematica, tematicalista));
-        add(Box.createRigidArea(new Dimension(0, 10))); // Añadir espacio vertical fijo entre los componentes
+        add(Box.createRigidArea(new Dimension(0, 10)));
         add(asistente);
-        add(Box.createRigidArea(new Dimension(0, 50))); // Añadir espacio vertical fijo entre los componentes
+        add(Box.createRigidArea(new Dimension(0, 50)));
         add(saldo);
-        add(Box.createRigidArea(new Dimension(0, 50))); // Añadir espacio vertical fijo entre los componentes
-        add(botonesPanel); // Añadir el panel de botones
-        add(Box.createRigidArea(new Dimension(0, 20))); // Añadir espacio vertical fijo al final
+        add(Box.createRigidArea(new Dimension(0, 50)));
+        add(botonesPanel);
+        add(Box.createRigidArea(new Dimension(0, 20)));
+        
     }
+
+    
 
     private JPanel createHorizontalPanel(JComponent component1, JComponent component2) {
         JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout(FlowLayout.CENTER)); // Centrar los componentes horizontalmente
+        panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         panel.add(component1);
-        panel.add(Box.createRigidArea(new Dimension(10, 0))); // Añadir espacio horizontal fijo entre los componentes
+        panel.add(Box.createRigidArea(new Dimension(10, 0)));
         panel.add(component2);
         return panel;
     }
+
     public void setMyActionListener(ActionListener listener){
         jugarButton.addActionListener(listener);
         salirButton.addActionListener(listener);
@@ -81,4 +104,21 @@ public class PanelPrincipal extends JPanel {
     public void setActionListener(ActionListener listener){
         anadirSaldoButton.addActionListener(listener);
     }
+    
+    public void setModelo(FruitMachineModel model) {
+        if (this.model != null) {
+            this.model.removeObserver(this);
+        }
+        this.model = model;
+        this.model.addObserver(this);
+        update(model);
+    }
+
+    @Override
+    public void update(FruitMachineModel model) {
+        saldo = new JLabel("Saldo: " + model.getSaldo());
+    }
+
+    
 }
+    

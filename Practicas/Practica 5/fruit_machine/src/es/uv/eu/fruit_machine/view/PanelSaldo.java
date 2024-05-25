@@ -32,6 +32,7 @@ public class PanelSaldo extends JPanel implements Observer {
         this.model = model;
         this.model.addObserver(this); // Registra este panel como observador del modelo
         update(model);
+        
     }
 
     public void setModelo(FruitMachineModel model){
@@ -53,4 +54,5 @@ public class PanelSaldo extends JPanel implements Observer {
         retirarSaldo.addActionListener(listener);
     }
 
+    
 }
