@@ -12,12 +12,13 @@ public class FruitMachineController {
     private FruitMachineView view;
     private FruitMachineModel model;
     private PanelPrincipalView panelPrincipalView;
+    private RankingView rankingView;
 
-    public FruitMachineController(PanelPrincipalView panelPrincipalView, FruitMachineView view, FruitMachineModel model) {
+    public FruitMachineController(PanelPrincipalView panelPrincipalView, FruitMachineView view, FruitMachineModel model, RankingView rankingView) {
         this.view = view;
         this.model = model;
         this.panelPrincipalView = panelPrincipalView;
-        
+        this.rankingView = rankingView;
 
         MenuActionListener MenuListener = new MenuActionListener();
         PanelSaldoActionListener PanelSaldoListener = new PanelSaldoActionListener();
@@ -46,6 +47,8 @@ public class FruitMachineController {
             switch (command) {
                 case "ranking":
                     // Implementar ranking
+                    rankingView.setVisible(true);
+                    rankingView.updateRanking(model);
                     System.out.println(model.getNombre() + " " + model.getPuntuacion());
                     break;
 

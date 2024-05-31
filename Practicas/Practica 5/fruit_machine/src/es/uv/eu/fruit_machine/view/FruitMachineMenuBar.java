@@ -16,6 +16,7 @@ public class FruitMachineMenuBar extends JMenuBar{
     private JMenuItem ranking;
     private JMenuItem informacion;
     private JMenuItem salir;
+    private JMenuItem nuevaPartida;
 
     public FruitMachineMenuBar() {
 
@@ -23,14 +24,17 @@ public class FruitMachineMenuBar extends JMenuBar{
         ranking = new JMenuItem("Ranking");
         informacion = new JMenuItem("Acerca de ...");
         salir = new JMenuItem("Salir");
+        nuevaPartida = new JMenuItem("Nueva Partida");
 
         ranking.setActionCommand("ranking");
         informacion.setActionCommand("informacion");
         salir.setActionCommand("salir");
+        nuevaPartida.setActionCommand("nuevaPartida");
         
         menu.add(ranking);
         menu.add(informacion);
         menu.add(salir);
+        menu.add(nuevaPartida);
 
         add(menu);
     }
