@@ -45,6 +45,14 @@ public class FruitMachineController {
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             switch (command) {
+
+                case "nuevaPartida":
+                    System.out.println("Nueva Partida");
+                    panelPrincipalView.setVisible(true);
+                    view.setVisible(false);
+                    view.repaint();
+                    break;
+
                 case "ranking":
                     // Implementar ranking
                     rankingView.setVisible(true);
