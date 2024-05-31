@@ -46,7 +46,7 @@ public class FruitMachineController {
             switch (command) {
                 case "ranking":
                     // Implementar ranking
-                    System.out.print(model.getNombre() + " " + model.getSaldo());
+                    System.out.print(model.getNombre() + " " + model.getPuntuacion());
                     break;
 
                 case "informacion":
@@ -135,6 +135,7 @@ public class FruitMachineController {
                 case "retirarSaldo":
                     int currentSaldo = model.getSaldo();
                     if (currentSaldo > 0) {
+                        model.setPuntuacion(currentSaldo);
                         model.setSaldo(0);  // Dejar el saldo a 0
                         JOptionPane.showMessageDialog(null, "Ha retirado: " + currentSaldo, "Retiro de saldo", JOptionPane.INFORMATION_MESSAGE);
                         model.notifyObservers();  // Notificar a los observadores
