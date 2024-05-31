@@ -128,6 +128,8 @@ public class PanelPrincipal extends JPanel implements Observer {
         repaint();
     }
 
-    
+    public String getNombre() {
+        return nombreusuario.getText();
+    }
 }
     

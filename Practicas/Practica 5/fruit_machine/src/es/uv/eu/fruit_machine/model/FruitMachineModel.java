@@ -12,6 +12,7 @@ public class FruitMachineModel {
     
     public int saldo;
     public int nums[];
+    public String nombre;
     private BufferedImage[] images;
     private String[] imagenFileNames;
     private List<Observer> observers;
@@ -75,6 +76,13 @@ public class FruitMachineModel {
     }
     public void setSaldo(int saldo) {
         this.saldo = saldo;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getNombre() {
+        return this.nombre;
     }
 
     public interface Observer {

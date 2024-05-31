@@ -46,7 +46,7 @@ public class FruitMachineController {
             switch (command) {
                 case "ranking":
                     // Implementar ranking
-                    System.out.println("Ranking");
+                    System.out.print(model.getNombre() + " " + model.getSaldo());
                     break;
 
                 case "informacion":
@@ -79,7 +79,7 @@ public class FruitMachineController {
             switch (command) {
                 case "Jugar":
                     panelPrincipalView.setVisible(false);
-                    System.out.println("Jugar");
+                    model.setNombre(panelPrincipalView.getNombre());
                     view.setVisible(true);
                     break;
                 case "salir":

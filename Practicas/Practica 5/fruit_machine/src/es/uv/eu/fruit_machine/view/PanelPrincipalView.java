@@ -39,4 +39,8 @@ public class PanelPrincipalView extends JFrame {
         menuBar.setMyActionListener(listener);
     }
 
+    public String getNombre() {
+        return panelprincipal.getNombre();
+    }
+
 }
