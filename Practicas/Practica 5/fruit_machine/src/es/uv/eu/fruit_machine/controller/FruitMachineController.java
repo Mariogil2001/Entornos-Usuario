@@ -46,7 +46,7 @@ public class FruitMachineController {
             switch (command) {
                 case "ranking":
                     // Implementar ranking
-                    System.out.print(model.getNombre() + " " + model.getPuntuacion());
+                    System.out.println(model.getNombre() + " " + model.getPuntuacion());
                     break;
 
                 case "informacion":
@@ -78,9 +78,14 @@ public class FruitMachineController {
             String command = e.getActionCommand();
             switch (command) {
                 case "Jugar":
-                    panelPrincipalView.setVisible(false);
-                    model.setNombre(panelPrincipalView.getNombre());
-                    view.setVisible(true);
+                    String nombre = panelPrincipalView.getNombre();
+                    if (nombre == null || nombre.equals("")) {
+                        JOptionPane.showMessageDialog(panelPrincipalView, "Por favor, introduce un nombre válido.");
+                    } else {
+                        panelPrincipalView.setVisible(false);
+                        model.setNombre(nombre);
+                        view.setVisible(true);
+                    }
                     break;
                 case "salir":
                     System.out.println("Salir");

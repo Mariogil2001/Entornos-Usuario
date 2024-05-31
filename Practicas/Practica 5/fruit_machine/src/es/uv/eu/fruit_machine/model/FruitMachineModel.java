@@ -12,18 +12,19 @@ public class FruitMachineModel {
     
     public int saldo;
     public int nums[];
-    public String nombre;
-    public int puntuacion;
+    public ArrayList<String> nombres;
+    public ArrayList<Integer> puntuaciones;
     private BufferedImage[] images;
     private String[] imagenFileNames;
     private List<Observer> observers;
 
     public FruitMachineModel(){
         this.saldo = 0;
-        this.puntuacion = 0;
         this.images = new BufferedImage[3];
         this.imagenFileNames = new String[3];
         this.observers = new ArrayList<>(); // Inicializa la lista de observadores
+        this.nombres = new ArrayList<>(); // Inicializa la lista de nombres
+        this.puntuaciones = new ArrayList<>(); // Inicializa la lista de puntuaciones
         this.tirada();
     }
 
@@ -80,17 +81,17 @@ public class FruitMachineModel {
         this.saldo = saldo;
     }
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombres.add(nombre);
     }
     
-    public String getNombre() {
-        return this.nombre;
+    public ArrayList<String> getNombre() {
+        return this.nombres;
     }
     public void setPuntuacion(int puntuacion) {
-        this.puntuacion = puntuacion;
+        this.puntuaciones.add(puntuacion);
     }
-    public int getPuntuacion() {
-        return this.puntuacion;
+    public ArrayList<Integer> getPuntuacion() {
+        return this.puntuaciones;
     }
     public interface Observer {
         public void update(FruitMachineModel model);        
